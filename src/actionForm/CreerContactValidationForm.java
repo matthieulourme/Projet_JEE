@@ -11,10 +11,13 @@ public class CreerContactValidationForm extends ActionForm {
 	private String nom=null;
 	private String prenom=null;
 	private String email=null;
+	private String telephone=null;
+	private String adresse=null;
 	
 	public int getId() {
 		return id;
 	}
+	
 	public String getNom() {
 		return nom;
 	}
@@ -27,27 +30,45 @@ public class CreerContactValidationForm extends ActionForm {
 		return email;
 	}
 	
+	public String getTelephone() {
+		return telephone;
+	}
+	
+	public String getAdresse() {
+		return adresse;
+	}
+	
 	public void setId(int i) {
-	id=i;
+		id=i;
 	}
 	
 	public void setNom(String string) {
-	nom=string;	
+		nom=string;	
 	}
 	
 	public void setPrenom(String string) {
 		prenom=string;	
-		}
+	}
 	
 	public void setEmail(String string) {
 		email=string;	
-		}
-	
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		this.id=0;
 		this.nom=null;
 		this.prenom=null;
 		this.email=null;
+		this.telephone=null;
+		this.adresse=null;
 	}
 	
 	public ActionErrors validate( ActionMapping mapping, HttpServletRequest request) {
@@ -61,7 +82,14 @@ public class CreerContactValidationForm extends ActionForm {
 		if(getEmail()==null || getEmail().length()<1) {
 			errors.add("email", new ActionMessage("Email pas correct"));
 		}
+		if(getTelephone()==null || getTelephone().length()<1) {
+			errors.add("telephone", new ActionMessage("Telephone pas correct"));
+		}
+		if(getAdresse()==null || getAdresse().length()<1) {
+			errors.add("adresse", new ActionMessage("Adresse pas correct"));
+		}
 		return errors;
 	}
 }
+
 

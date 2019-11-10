@@ -20,9 +20,11 @@ public class CreerContactAction extends Action {
 		final String nom= lForm.getNom();
 		final String prenom= lForm.getPrenom();
 		final String email= lForm.getEmail();
+		final String telephone = lForm.getTelephone();
+		final String adresse = lForm.getAdresse();
 		
 		final DAOContact lDAOContact = new DAOContact();
-		final String lError= lDAOContact.addContact(nom,prenom,email);
+		final String lError= lDAOContact.addContact(nom, prenom, email, telephone, adresse);
 		
 		if(lError == null) {
 			// if no exception is raised,  forward "menu"

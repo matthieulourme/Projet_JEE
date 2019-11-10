@@ -16,8 +16,8 @@
 		<label>Noms</label> <input type="text" name="nom"><br>
 		<label>Prénom</label> <input type="text" name="prenom"><br>
 		<label>Email</label> <input type="email" name="email"><br>
-		<label>Adresse</label><input type="text" name="adresse"><br>
 		<label>Téléphone</label><input type="text" name="telephone"><br>
+		<label>Adresse</label><input type="text" name="adresse"><br>
 		<html:submit>Envoyer</html:submit>
 	</html:form>
 </body>

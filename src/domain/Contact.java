@@ -5,6 +5,8 @@ public class Contact {
 	private String nom;
 	private String prenom;
 	private String email;
+	private String telephone;
+	private String adresse;
 	
 	public int getId() {
 		return id;
@@ -21,6 +23,14 @@ public class Contact {
 		return email;
 	}
 	
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public String getAdresse() {
+		return adresse;
+	}
+
 	public void setId(int i) {
 		id=i;
 	}
@@ -37,5 +47,12 @@ public class Contact {
 		email=string;	
 	}
 	
-
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+	
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
 }
+
