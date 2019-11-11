@@ -17,20 +17,22 @@
 </head>
 <body>
 	<a href="CreerContact.do"><bean:message key="creer_contact"/></a>
-	<a href="SupprimerContact.do"><bean:message key="supp_contact"/></a>
-	<a href="UpdateContact.do"><bean:message key="update_contact"/></a>
 	<a href="RechercheContact.do"><bean:message key="recherche_contact"/></a>
+	<a href="CreerGroupe.do"><bean:message key="creer_groupe"/></a>
 	
 	<br>
 	<br>
 	
+	<h4><bean:message key="titre_contact"/></h4>
 	<table border="2">
 		<thead>
 			<tr>
 				<th>#</th>
-				<th>Nom</th>
-				<th>Prénom</th>
-				<th>Email</th>
+				<th><bean:message key="tab_nom"/></th>
+				<th><bean:message key="tab_prenom"/></th>
+				<th><bean:message key="tab_email"/></th>
+				<th><bean:message key="tab_tel"/></th>
+				<th><bean:message key="tab_adr"/></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -41,15 +43,31 @@
 					final DataSource lDataSource= (DataSource) lContext.lookup(RESOURCE_JDBC);
 					final Connection lConnection = lDataSource.getConnection();
 					
-					final PreparedStatement lPreparedStatementCreation2 = lConnection.prepareStatement("SELECT * FROM CONTACT");
+					final PreparedStatement lPreparedStatementCreation2 = lConnection.prepareStatement("SELECT * FROM contact LEFT JOIN telephone ON contact.id = telephone.id LEFT JOIN adresse ON contact.id = adresse.id");
 					ResultSet rs = lPreparedStatementCreation2.executeQuery();
 					while(rs.next()) {
 			%>
 		   <tr>
 		   	   <td><%out.println(rs.getInt("id")); %></td>
-		       <td><%out.println(rs.getString("name")); %></td>
+		       <td><a href="Contact.jsp?userId=<%=rs.getInt("id")%>"><%out.println(rs.getString("name"));%></a></td>
 		       <td><%out.println(rs.getString("firstname")); %></td>
 		       <td><%out.println(rs.getString("mail")); %></td>
+		       <td>
+		       		<%if(rs.getString("numero")!=null){
+		    	   		out.println(rs.getString("numero"));
+		       		}
+		    	   	else {
+		    	   		out.println("vide");
+		    	   	}%>
+			   </td>
+			   <td>
+		       		<%if(rs.getString("adr")!=null){
+		    	   		out.println(rs.getString("adr"));
+		       		}
+		    	   	else {
+		    	   		out.println("vide");
+		    	   	}%>
+			   </td>
 	       </tr>
 	       <%
 					}

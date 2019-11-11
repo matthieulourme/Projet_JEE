@@ -22,13 +22,13 @@ public class DAOContact {
 			final DataSource lDataSource= (DataSource) lContext.lookup(RESOURCE_JDBC);
 			final Connection lConnection = lDataSource.getConnection();
 			
-			final PreparedStatement lPreparedStatementCreation1 = lConnection.prepareStatement("INSERT INTO CONTACT(name, firstname, mail) VALUES (?, ?, ?)");
+			final PreparedStatement lPreparedStatementCreation1 = lConnection.prepareStatement("INSERT INTO contact(name, firstname, mail) VALUES (?, ?, ?)");
 			lPreparedStatementCreation1.setString(1, nom);
 			lPreparedStatementCreation1.setString(2, prenom);
 			lPreparedStatementCreation1.setString(3, email);
 			lPreparedStatementCreation1.executeUpdate();
 			
-			final PreparedStatement lPreparedStatementCreation2 = lConnection.prepareStatement("SELECT id FROM CONTACT WHERE mail = ?");
+			final PreparedStatement lPreparedStatementCreation2 = lConnection.prepareStatement("SELECT id FROM contact WHERE mail = ?");
 			lPreparedStatementCreation2.setString(1, email);
 			ResultSet rs = lPreparedStatementCreation2.executeQuery();
 			int id;
@@ -39,11 +39,11 @@ public class DAOContact {
 				do {
 					id = rs.getInt("id");
 				} while(rs.next());			
-				final PreparedStatement lPreparedStatementCreation3 = lConnection.prepareStatement("INSERT INTO TELEPHONE(numero, contactID) VALUES (?, ?)");
+				final PreparedStatement lPreparedStatementCreation3 = lConnection.prepareStatement("INSERT INTO telephone(numero, contactID) VALUES (?, ?)");
 				lPreparedStatementCreation3.setString(1, telephone);
 				lPreparedStatementCreation3.setInt(2, id);
 				lPreparedStatementCreation3.executeUpdate();
-				final PreparedStatement lPreparedStatementCreation4 = lConnection.prepareStatement("INSERT INTO ADRESSE(adr, contactID) VALUES (?, ?)");
+				final PreparedStatement lPreparedStatementCreation4 = lConnection.prepareStatement("INSERT INTO adresse(adr, contactID) VALUES (?, ?)");
 				lPreparedStatementCreation4.setString(1, adresse);
 				lPreparedStatementCreation4.setInt(2, id);
 				lPreparedStatementCreation4.executeUpdate();
@@ -74,20 +74,50 @@ public class DAOContact {
 		}
 	}
 	
-	/*public String updateContact(String id, String nom, String prenom, String email) {
+	public String updateContact(final int id, final String nom,final String prenom,final String email,final String telephone, final String adresse ) {
 		try {
 			final Context lContext= new InitialContext();
 			final DataSource lDataSource= (DataSource) lContext.lookup(RESOURCE_JDBC);
 			final Connection lConnection = lDataSource.getConnection();
-			final PreparedStatement lPreparedStatementSuppression=lConnection.prepareStatement("Update contact SET name = ?, firstname = ?, mail = ?, ");
-			lPreparedStatementSuppression.setString(1, mail);
-			lPreparedStatementSuppression.executeUpdate();
+			final PreparedStatement lPreparedStatementUpdate1=lConnection.prepareStatement("UPDATE contact SET name = ?, firstname = ?, mail = ? WHERE id = ?");
+			lPreparedStatementUpdate1.setString(1, nom);
+			lPreparedStatementUpdate1.setString(2, prenom);
+			lPreparedStatementUpdate1.setString(3, email);
+			lPreparedStatementUpdate1.setInt(4, id);
+			lPreparedStatementUpdate1.executeUpdate();
+			
+			final PreparedStatement lPreparedStatementUpdate2 = lConnection.prepareStatement("SELECT id FROM contact WHERE mail = ?");
+			lPreparedStatementUpdate2.setString(1, email);		
+			final PreparedStatement lPreparedStatementUpdate3 = lConnection.prepareStatement("UPDATE telephone SET numero = ? WHERE id = ?");
+			lPreparedStatementUpdate3.setString(1, telephone);
+			lPreparedStatementUpdate3.setInt(2, id);
+			lPreparedStatementUpdate3.executeUpdate();
+			final PreparedStatement lPreparedStatementUpdate4 = lConnection.prepareStatement("UPDATE adresse SET adr = ? WHERE id = ?");
+			lPreparedStatementUpdate4.setString(1, adresse);
+			lPreparedStatementUpdate4.setInt(2, id);
+			lPreparedStatementUpdate4.executeUpdate();
 			return null;
 		} catch (NamingException e) {
 			return "NamingException : "+e.getMessage();
 		} catch (SQLException e) {
 			return "SQLException : "+e.getMessage();
 		}
-	}*/
+	}
 	
+	public String addGroup(final String nom) {
+		try {
+			final Context lContext= new InitialContext();
+			final DataSource lDataSource= (DataSource) lContext.lookup(RESOURCE_JDBC);
+			final Connection lConnection = lDataSource.getConnection();
+			
+			final PreparedStatement lPreparedStatementCreation1 = lConnection.prepareStatement("INSERT INTO GROUPE(nom) VALUES (?)");
+			lPreparedStatementCreation1.setString(1, nom);
+			lPreparedStatementCreation1.executeUpdate();
+			return null;
+		} catch (NamingException e) {
+			return "NamingException : "+e.getMessage();
+		} catch (SQLException e) {
+			return "SQLException : "+e.getMessage();
+		}
+	}
 }
