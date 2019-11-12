@@ -161,4 +161,22 @@ public class DAOContact {
 			return "SQLException : "+e.getMessage();
 		}
 	}
+	
+	public String addContactGroup(final int contactID, final int groupeID) {
+		try {
+			final Context lContext= new InitialContext();
+			final DataSource lDataSource= (DataSource) lContext.lookup(RESOURCE_JDBC);
+			final Connection lConnection = lDataSource.getConnection();
+			
+			final PreparedStatement lPreparedStatementCreation1 = lConnection.prepareStatement("INSERT INTO GROUPE_CONTACT(contactID, groupeID) VALUES (?, ?)");
+			lPreparedStatementCreation1.setInt(1, contactID);
+			lPreparedStatementCreation1.setInt(2, groupeID);
+			lPreparedStatementCreation1.executeUpdate();
+			return null;
+		} catch (NamingException e) {
+			return "NamingException : "+e.getMessage();
+		} catch (SQLException e) {
+			return "SQLException : "+e.getMessage();
+		}
+	}
 }

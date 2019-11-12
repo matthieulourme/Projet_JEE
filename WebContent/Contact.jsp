@@ -50,7 +50,6 @@
 		<input type="hidden" name="email" value="<%=rs.getString("mail")%>" />
 		<a href="menu.jsp" onclick="parentNode.submit();"><bean:message key="supp_contact"/></a>
 	</html:form>
-	<br>
    	<%
 			}
 		} catch (NamingException e) {
@@ -60,5 +59,6 @@
 		}
 	%>
 	<a href="UpdateContact.do?userId=<%=request.getParameter("userId")%>"><bean:message key="update_contact"/></a>
+	<a href="CreerContactGroupe.do?userId=<%=request.getParameter("userId")%>"><bean:message key="contact_groupe"/></a>
 </body>
 </html:html>
