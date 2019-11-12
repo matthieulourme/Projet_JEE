@@ -23,7 +23,7 @@
 			final DataSource lDataSource= (DataSource) lContext.lookup(RESOURCE_JDBC);
 			final Connection lConnection = lDataSource.getConnection();
 			
-			final PreparedStatement lPreparedStatementCreation2 = lConnection.prepareStatement("SELECT * FROM contact, telephone, adresse WHERE contact.id = ? and telephone.id = ? and adresse.id = ?");
+			final PreparedStatement lPreparedStatementCreation2 = lConnection.prepareStatement("SELECT * FROM contact, telephone, adresse WHERE contact.id = ? and telephone.contactID = ? and adresse.contactID = ?");
 			lPreparedStatementCreation2.setString(1, request.getParameter("userId"));
 			lPreparedStatementCreation2.setString(2, request.getParameter("userId"));
 			lPreparedStatementCreation2.setString(3, request.getParameter("userId"));

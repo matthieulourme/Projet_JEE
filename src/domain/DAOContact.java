@@ -74,7 +74,7 @@ public class DAOContact {
 		}
 	}
 	
-	public String researchContact(final String mail) {
+	public String  researchContact(final String mail) {
 		try {
 			final Context lContext= new InitialContext();
 			final DataSource lDataSource= (DataSource) lContext.lookup(RESOURCE_JDBC);
@@ -82,14 +82,13 @@ public class DAOContact {
 			final PreparedStatement lPreparedStatementRecherche = lConnection.prepareStatement("SELECT * FROM contact WHERE mail = ?");
 			lPreparedStatementRecherche.setString(1, mail);
 			ResultSet rs = lPreparedStatementRecherche.executeQuery();
-			int id;
+			
 			if (rs.next() == false) {
-				System.out.println("Aucun résultat trouvé");
+				
 			}
 			else {
 				do {
-					id = rs.getInt("id");
-					System.out.println(id);
+					
 				} while(rs.next());
 			}
 			return null;
