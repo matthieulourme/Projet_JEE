@@ -17,7 +17,7 @@ public class RechercheContactAction extends Action  {
 		final String mail=lForm.getMail();
 		
 		final DAOContact lDAOContact = new DAOContact();
-		final String lError= lDAOContact.deleteContact(mail);
+		final String lError= lDAOContact.researchContact(mail);
 		
 		if(lError == null) {
 			// if no exception is raised,  forward "menu"

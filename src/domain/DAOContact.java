@@ -74,6 +74,32 @@ public class DAOContact {
 		}
 	}
 	
+	public String researchContact(final String mail) {
+		try {
+			final Context lContext= new InitialContext();
+			final DataSource lDataSource= (DataSource) lContext.lookup(RESOURCE_JDBC);
+			final Connection lConnection = lDataSource.getConnection();
+			final PreparedStatement lPreparedStatementRecherche = lConnection.prepareStatement("SELECT * FROM contact WHERE mail = ?");
+			lPreparedStatementRecherche.setString(1, mail);
+			ResultSet rs = lPreparedStatementRecherche.executeQuery();
+			int id;
+			if (rs.next() == false) {
+				System.out.println("Aucun résultat trouvé");
+			}
+			else {
+				do {
+					id = rs.getInt("id");
+					System.out.println(id);
+				} while(rs.next());
+			}
+			return null;
+		} catch (NamingException e) {
+			return "NamingException : "+e.getMessage();
+		} catch (SQLException e) {
+			return "SQLException : "+e.getMessage();
+		}
+	}
+	
 	public String updateContact(final int id, final String nom,final String prenom,final String email,final String telephone, final String adresse ) {
 		try {
 			final Context lContext= new InitialContext();
@@ -120,8 +146,4 @@ public class DAOContact {
 			return "SQLException : "+e.getMessage();
 		}
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> a0dc60aebcc4dda8f5d07fa6740214363d80061b
