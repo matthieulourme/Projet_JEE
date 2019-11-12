@@ -19,6 +19,7 @@
 	<a href="CreerContact.do"><bean:message key="creer_contact"/></a>
 	<a href="RechercheContact.do"><bean:message key="recherche_contact"/></a>
 	<a href="CreerGroupe.do"><bean:message key="creer_groupe"/></a>
+	<a href="SupprimerGroupe.do"><bean:message key="supp_groupe"/></a>
 	
 	<br>
 	<br>

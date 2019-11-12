@@ -145,4 +145,20 @@ public class DAOContact {
 			return "SQLException : "+e.getMessage();
 		}
 	}
+	
+	public String deleteGroup(final String nom) {
+		try {
+			final Context lContext= new InitialContext();
+			final DataSource lDataSource= (DataSource) lContext.lookup(RESOURCE_JDBC);
+			final Connection lConnection = lDataSource.getConnection();
+			final PreparedStatement lPreparedStatementSuppression=lConnection.prepareStatement("DELETE FROM groupe WHERE nom = ?");
+			lPreparedStatementSuppression.setString(1, nom);
+			lPreparedStatementSuppression.executeUpdate();
+			return null;
+		} catch (NamingException e) {
+			return "NamingException : "+e.getMessage();
+		} catch (SQLException e) {
+			return "SQLException : "+e.getMessage();
+		}
+	}
 }
