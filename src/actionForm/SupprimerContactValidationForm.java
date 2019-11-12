@@ -8,25 +8,34 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
 public class SupprimerContactValidationForm extends ActionForm{
-	private String mail=null;
-
-	public String getMail() {
-		return mail;
-	}
-
-	public void setMail(String mail) {
-		this.mail = mail;
+	private int id=0;
+	private String email=null;
+	
+	public int getId() {
+		return id;
 	}
 	
+	public String getEmail() {
+		return email;
+	}
 	
+	public void setId(int i) {
+		id=i;
+	}
+	
+	public void setEmail(String string) {
+		email=string;	
+	}
+
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		this.mail=null;
+		this.id=0;
+		this.email=null;
 	}
 	
 	public ActionErrors validate( ActionMapping mapping, HttpServletRequest request) {
 		ActionErrors errors= new ActionErrors();
-		if(getMail()==null || getMail().length()<1) {
-			errors.add("mail", new ActionMessage("Email pas correct"));
+		if(getEmail()==null || getEmail().length()<1) {
+			errors.add("email", new ActionMessage("Email pas correct"));
 		}
 		return errors;
 	}

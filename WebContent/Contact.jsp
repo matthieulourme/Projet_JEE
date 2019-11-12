@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
+<%@ taglib prefix="nested" uri="http://struts.apache.org/tags-nested" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
@@ -9,8 +11,7 @@
 <%@ page import="javax.naming.InitialContext" %>
 <%@ page import="javax.naming.NamingException" %>
 <%@ page import="javax.sql.DataSource" %>
-<!DOCTYPE html>
-<html>
+<html:html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -23,10 +24,8 @@
 			final DataSource lDataSource= (DataSource) lContext.lookup(RESOURCE_JDBC);
 			final Connection lConnection = lDataSource.getConnection();
 			
-			final PreparedStatement lPreparedStatementCreation2 = lConnection.prepareStatement("SELECT * FROM contact, telephone, adresse WHERE contact.id = ? and telephone.id = ? and adresse.id = ?");
+			final PreparedStatement lPreparedStatementCreation2 = lConnection.prepareStatement("SELECT * FROM contact LEFT JOIN telephone ON contact.id = telephone.contactID LEFT JOIN adresse ON contact.id = adresse.contactID WHERE contact.id=?");
 			lPreparedStatementCreation2.setString(1, request.getParameter("userId"));
-			lPreparedStatementCreation2.setString(2, request.getParameter("userId"));
-			lPreparedStatementCreation2.setString(3, request.getParameter("userId"));
 			ResultSet rs = lPreparedStatementCreation2.executeQuery();
 			while(rs.next()) {
 	%>
@@ -44,19 +43,22 @@
 	   	   	else {
 	   	   		out.println("");
 	   	   	}%>
+	<br>
+	<html:form action="/SupprimerContact">
+	<html:errors/>
+		<input type="hidden" name="id" value="<%=request.getParameter("userId")%>" />
+		<input type="hidden" name="email" value="<%=rs.getString("mail")%>" />
+		<a href="menu.jsp" onclick="parentNode.submit();"><bean:message key="supp_contact"/></a>
+	</html:form>
+	<br>
    	<%
 			}
-   	%>
-	<%
-			} catch (NamingException e) {
-				e.getMessage();
-			} catch (SQLException e) {
-				e.getMessage();
-			}
+		} catch (NamingException e) {
+			e.getMessage();
+		} catch (SQLException e) {
+			e.getMessage();
+		}
 	%>
-	<br>
-	<a href="SupprimerContact.do"><bean:message key="supp_contact"/></a>
-	<br>
 	<a href="UpdateContact.do?userId=<%=request.getParameter("userId")%>"><bean:message key="update_contact"/></a>
 </body>
-</html>
+</html:html>

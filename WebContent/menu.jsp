@@ -43,7 +43,7 @@
 					final DataSource lDataSource= (DataSource) lContext.lookup(RESOURCE_JDBC);
 					final Connection lConnection = lDataSource.getConnection();
 					
-					final PreparedStatement lPreparedStatementCreation2 = lConnection.prepareStatement("SELECT * FROM contact LEFT JOIN telephone ON contact.id = telephone.id LEFT JOIN adresse ON contact.id = adresse.id");
+					final PreparedStatement lPreparedStatementCreation2 = lConnection.prepareStatement("SELECT * FROM contact LEFT JOIN telephone ON contact.id = telephone.contactID LEFT JOIN adresse ON contact.id = adresse.contactID");
 					ResultSet rs = lPreparedStatementCreation2.executeQuery();
 					while(rs.next()) {
 			%>

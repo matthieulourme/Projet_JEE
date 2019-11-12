@@ -14,10 +14,11 @@ import domain.DAOContact;
 public class SupprimerContactAction extends Action {
 	public ActionForward execute(final ActionMapping pMapping, ActionForm pForm,final HttpServletRequest pRequest, final HttpServletResponse pResponse) {
 		final SupprimerContactValidationForm lForm= (SupprimerContactValidationForm)pForm;
-		final String mail=lForm.getMail();
+		final int id=lForm.getId();
+		final String mail=lForm.getEmail();
 		
 		final DAOContact lDAOContact = new DAOContact();
-		final String lError= lDAOContact.deleteContact(mail);
+		final String lError= lDAOContact.deleteContact(id, mail);
 		
 		if(lError == null) {
 			// if no exception is raised,  forward "menu"

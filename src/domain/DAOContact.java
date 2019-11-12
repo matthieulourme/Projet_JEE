@@ -58,13 +58,13 @@ public class DAOContact {
 	
 	
 	
-	public String deleteContact(final String mail) {
+	public String deleteContact(final int id, final String mail) {
 		try {
 			final Context lContext= new InitialContext();
 			final DataSource lDataSource= (DataSource) lContext.lookup(RESOURCE_JDBC);
 			final Connection lConnection = lDataSource.getConnection();
-			final PreparedStatement lPreparedStatementSuppression=lConnection.prepareStatement("DELETE FROM contact WHERE mail = ?");
-			lPreparedStatementSuppression.setString(1, mail);
+			final PreparedStatement lPreparedStatementSuppression=lConnection.prepareStatement("DELETE FROM contact WHERE id = ?");
+			lPreparedStatementSuppression.setInt(1, id);
 			lPreparedStatementSuppression.executeUpdate();
 			return null;
 		} catch (NamingException e) {
@@ -88,11 +88,11 @@ public class DAOContact {
 			
 			final PreparedStatement lPreparedStatementUpdate2 = lConnection.prepareStatement("SELECT id FROM contact WHERE mail = ?");
 			lPreparedStatementUpdate2.setString(1, email);		
-			final PreparedStatement lPreparedStatementUpdate3 = lConnection.prepareStatement("UPDATE telephone SET numero = ? WHERE id = ?");
+			final PreparedStatement lPreparedStatementUpdate3 = lConnection.prepareStatement("UPDATE telephone SET numero = ? WHERE contactID = ?");
 			lPreparedStatementUpdate3.setString(1, telephone);
 			lPreparedStatementUpdate3.setInt(2, id);
 			lPreparedStatementUpdate3.executeUpdate();
-			final PreparedStatement lPreparedStatementUpdate4 = lConnection.prepareStatement("UPDATE adresse SET adr = ? WHERE id = ?");
+			final PreparedStatement lPreparedStatementUpdate4 = lConnection.prepareStatement("UPDATE adresse SET adr = ? WHERE contactID = ?");
 			lPreparedStatementUpdate4.setString(1, adresse);
 			lPreparedStatementUpdate4.setInt(2, id);
 			lPreparedStatementUpdate4.executeUpdate();

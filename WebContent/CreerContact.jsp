@@ -13,7 +13,7 @@
 <body>
 	<html:form action="/CreerContact">
 	<html:errors/>
-		<label>Noms</label> <input type="text" name="nom"><br>
+		<label>Nom</label> <input type="text" name="nom"><br>
 		<label>Prénom</label> <input type="text" name="prenom"><br>
 		<label>Email</label> <input type="email" name="email"><br>
 		<label>Téléphone</label><input type="text" name="telephone"><br>
