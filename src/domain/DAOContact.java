@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -74,12 +75,13 @@ public class DAOContact {
 		}
 	}
 	
-	public String  researchContact(final String mail) {
+	public ArrayList  researchContact(final String mail) {
 		try {
+			final ArrayList resRecherche= new ArrayList();
 			final Context lContext= new InitialContext();
 			final DataSource lDataSource= (DataSource) lContext.lookup(RESOURCE_JDBC);
 			final Connection lConnection = lDataSource.getConnection();
-			final PreparedStatement lPreparedStatementRecherche = lConnection.prepareStatement("SELECT * FROM contact WHERE mail = ?");
+			final PreparedStatement lPreparedStatementRecherche = lConnection.prepareStatement("SELECT * FROM contact LEFT JOIN telephone ON contact.id = telephone.contactID LEFT JOIN adresse ON contact.id = adresse.contactID WHERE contact.mail=?");
 			lPreparedStatementRecherche.setString(1, mail);
 			ResultSet rs = lPreparedStatementRecherche.executeQuery();
 			
@@ -88,15 +90,19 @@ public class DAOContact {
 			}
 			else {
 				do {
-					
+					resRecherche.add(new Contact(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(6),rs.getString(9)));
 				} while(rs.next());
 			}
-			return null;
+			rs.close();
+			return resRecherche;
 		} catch (NamingException e) {
-			return "NamingException : "+e.getMessage();
+			e.printStackTrace();
+            return null;
 		} catch (SQLException e) {
-			return "SQLException : "+e.getMessage();
+			 e.printStackTrace();
+	            return null;
 		}
+
 	}
 	
 	public String updateContact(final int id, final String nom,final String prenom,final String email,final String telephone, final String adresse ) {

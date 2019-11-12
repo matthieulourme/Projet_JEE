@@ -8,6 +8,16 @@ public class Contact {
 	private String telephone;
 	private String adresse;
 	
+	
+	public Contact(int id, String nom, String prenom, String email,String telephone, String adresse) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone=telephone;
+		this.adresse=adresse;
+	}
 	public int getId() {
 		return id;
 	}
