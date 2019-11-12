@@ -81,8 +81,7 @@
 				name="RechercheContactValidationForm" scope="request"
 				
 				input="/RechercheContact.jsp">
-			<forward name="menu" path="/menu.jsp" />
-			<forward name="error" path="/error.jsp" />
+			<forward name="recherche" path="/resRecherche.jsp" />
 	</action>
 	
 	<action path="/SupprimerGroupe" forward="/SupprimerGroupe.jsp"/>
