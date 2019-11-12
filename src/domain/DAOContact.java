@@ -120,4 +120,8 @@ public class DAOContact {
 			return "SQLException : "+e.getMessage();
 		}
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> a0dc60aebcc4dda8f5d07fa6740214363d80061b
