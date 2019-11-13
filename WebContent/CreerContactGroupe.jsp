@@ -56,7 +56,14 @@
 						<%
 		       		}
 		       		else {
-		       			out.println("supprimer de ce groupe");
+		       			%>	
+		       			<html:form action="/SupprimerContactGroupe">
+							<html:errors/>
+								<input type="hidden" name="contactID" value="<%=request.getParameter("userId")%>" />
+								<input type="hidden" name="groupeID" value="<%=rs.getInt("id")%>"/>
+								<a href="menu.jsp" onclick="parentNode.submit();"><bean:message key="supp_contact_groupe"/></a>
+						</html:form>
+						<%
 		       		}
 		       		%>
 			   </td>
