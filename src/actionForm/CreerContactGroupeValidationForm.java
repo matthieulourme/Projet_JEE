@@ -44,7 +44,7 @@ public class CreerContactGroupeValidationForm extends ActionForm {
 	
 	public ActionErrors validate( ActionMapping mapping, HttpServletRequest request) {
 		ActionErrors errors= new ActionErrors();
-		if(getNom()==null || getNom().length()<1) {
+		if(getContactID()==0 || getGroupeID()==0) {
 			errors.add("nom", new ActionMessage("Nom pas correct"));
 		}
 		return errors;

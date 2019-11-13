@@ -173,7 +173,6 @@ public class DAOContact {
 			final Context lContext= new InitialContext();
 			final DataSource lDataSource= (DataSource) lContext.lookup(RESOURCE_JDBC);
 			final Connection lConnection = lDataSource.getConnection();
-			
 			final PreparedStatement lPreparedStatementCreation1 = lConnection.prepareStatement("INSERT INTO GROUPE_CONTACT(contactID, groupeID) VALUES (?, ?)");
 			lPreparedStatementCreation1.setInt(1, contactID);
 			lPreparedStatementCreation1.setInt(2, groupeID);

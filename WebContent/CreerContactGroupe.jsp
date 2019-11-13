@@ -46,7 +46,8 @@
 		       		lPreparedStatementCreation3.setInt(2, rs.getInt("id"));
 		       		ResultSet rs2 = lPreparedStatementCreation3.executeQuery();
 		       		if(!rs2.next()) {
-		       			%>	<html:form action="/CreerContactGroupe">
+		       			%>	
+		       			<html:form action="/CreerContactGroupe">
 							<html:errors/>
 								<input type="hidden" name="contactID" value="<%=request.getParameter("userId")%>" />
 								<input type="hidden" name="groupeID" value="<%=rs.getInt("id")%>"/>
