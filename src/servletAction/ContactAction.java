@@ -12,26 +12,20 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import actionForm.LoginValidationForm;
+import actionForm.ContactValidationForm;
 import domain.DAOContact;
 
-public class LoginAction extends Action{
-	
+public class ContactAction extends Action {
 	public ActionForward execute(final ActionMapping pMapping, ActionForm pForm,final HttpServletRequest pRequest, final HttpServletResponse pResponse) {
-		final LoginValidationForm lForm= (LoginValidationForm)pForm;
-		final String name=lForm.getName();
-		final String password=lForm.getPassword();
+		final ContactValidationForm lForm= (ContactValidationForm)pForm;
+		final int id = lForm.getId();
+		HttpSession session = pRequest.getSession();
+		final DAOContact lDAOContact = new DAOContact();
+		final List liste= lDAOContact.infoContact(id);
 		
-		if(name.equals(password)) {
-			HttpSession session = pRequest.getSession();
-			final DAOContact lDAOContact = new DAOContact();
-			final List liste = lDAOContact.allContact();
-			session.setAttribute("allContact", liste);
-			return pMapping.findForward("menu");
-		}
-		else {
-			return pMapping.findForward("index");
-		}
+		if(liste != null){
+            session.setAttribute("infoContact" , liste);
+        }
+        return (pMapping.findForward("contact"));
 	}
-
 }

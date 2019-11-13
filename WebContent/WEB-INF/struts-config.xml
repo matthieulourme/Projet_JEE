@@ -15,6 +15,7 @@
 		<form-bean name="SupprimerGroupeValidationForm" type="actionForm.SupprimerGroupeValidationForm"/>
 		<form-bean name="CreerContactGroupeValidationForm" type="actionForm.CreerContactGroupeValidationForm"/>
 		<form-bean name="SupprimerContactGroupeValidationForm" type="actionForm.SupprimerContactGroupeValidationForm"/>
+		<form-bean name="ContactValidationForm" type="actionForm.ContactValidationForm"/>
 
 	</form-beans>
 	<action-mappings>
@@ -117,6 +118,16 @@
 				input="/CreerContactGroupe.jsp">
 			<forward name="menu" path="/menu.jsp" />
 			<forward name="error" path="/error.jsp" />
+	</action>
+	
+	<action path="/Contact" forward="/Contact.jsp" />
+
+	<action path="/Contact" 
+				type="servletAction.ContactAction"
+				name="ContactValidationForm" scope="request" 
+				
+				input="/Contact.jsp">
+			<forward name="contact" path="/Contact.jsp" />
 	</action>
 	
 	</action-mappings>
