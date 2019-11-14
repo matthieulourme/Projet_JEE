@@ -23,10 +23,16 @@ public class LoginAction extends Action{
 		final String password=lForm.getPassword();
 		
 		if(name.equals(password)) {
-			HttpSession session = pRequest.getSession();
-			final DAOContact lDAOContact = new DAOContact();
-			final List liste = lDAOContact.allContact();
-			session.setAttribute("allContact", liste);
+			HttpSession session1 = pRequest.getSession();
+			final DAOContact lDAOContact1 = new DAOContact();
+			final List liste1 = lDAOContact1.allContact();
+			session1.setAttribute("allContact", liste1);
+			
+			HttpSession session2 = pRequest.getSession();
+			final DAOContact lDAOContact2 = new DAOContact();
+			final List liste2 = lDAOContact2.allGroup();
+			session2.setAttribute("allGroupe", liste2);
+			
 			return pMapping.findForward("menu");
 		}
 		else {

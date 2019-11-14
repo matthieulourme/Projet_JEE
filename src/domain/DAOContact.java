@@ -258,4 +258,32 @@ public class DAOContact {
 	         return null;
 		}
 	}
+	
+	public List allGroup() {
+		try {
+			final List allgroup = new ArrayList();
+			final Context lContext= new InitialContext();
+			final DataSource lDataSource= (DataSource) lContext.lookup(RESOURCE_JDBC);
+			final Connection lConnection = lDataSource.getConnection();
+			
+			final PreparedStatement lPreparedStatementCreation2 = lConnection.prepareStatement("SELECT * FROM groupe");
+			ResultSet rs = lPreparedStatementCreation2.executeQuery();
+			if (rs.next() == false) {
+				
+			}
+			else {
+				do {
+					allgroup.add(new Groupe(rs.getInt(1),rs.getString(2)));
+				} while(rs.next());
+			}
+			rs.close();
+			return allgroup;
+		} catch (NamingException e) {
+			e.printStackTrace();
+	        return null;
+		} catch (SQLException e) {
+			 e.printStackTrace();
+	         return null;
+		}
+	}
 }

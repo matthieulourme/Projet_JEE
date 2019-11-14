@@ -1,7 +1,10 @@
 package servletAction;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -22,6 +25,10 @@ public class SupprimerContactAction extends Action {
 		
 		if(lError == null) {
 			// if no exception is raised,  forward "menu"
+			HttpSession session = pRequest.getSession();
+			final DAOContact lDAOContact2 = new DAOContact();
+			final List liste = lDAOContact2.allContact();
+			session.setAttribute("allContact", liste);
 			return pMapping.findForward("menu");
 		}
 		else {

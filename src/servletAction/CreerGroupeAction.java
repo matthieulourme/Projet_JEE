@@ -1,7 +1,10 @@
 package servletAction;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -23,6 +26,10 @@ public class CreerGroupeAction extends Action {
 		
 		if(lError == null) {
 			// if no exception is raised,  forward "menu"
+			HttpSession session2 = pRequest.getSession();
+			final DAOContact lDAOContact2 = new DAOContact();
+			final List liste2 = lDAOContact2.allGroup();
+			session2.setAttribute("allGroupe", liste2);
 			return pMapping.findForward("menu");
 		}
 		else {
