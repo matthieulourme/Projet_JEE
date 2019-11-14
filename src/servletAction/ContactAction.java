@@ -20,11 +20,18 @@ public class ContactAction extends Action {
 		final ContactValidationForm lForm= (ContactValidationForm)pForm;
 		final int id = lForm.getId();
 		HttpSession session = pRequest.getSession();
-		final DAOContact lDAOContact = new DAOContact();
-		final List liste= lDAOContact.infoContact(id);
+		final DAOContact lDAOContact1 = new DAOContact();
+		final List liste1 = lDAOContact1.infoContact(id);
 		
-		if(liste != null){
-            session.setAttribute("infoContact" , liste);
+		HttpSession session2 = pRequest.getSession();
+		final DAOContact lDAOContact2 = new DAOContact();
+		final List liste2 = lDAOContact2.groupInclusion(id);
+		
+		if(liste1 != null){
+            session.setAttribute("infoContact" , liste1);
+        }
+		if(liste2 != null){
+            session.setAttribute("groupInclusion" , liste2);
         }
         return (pMapping.findForward("contact"));
 	}

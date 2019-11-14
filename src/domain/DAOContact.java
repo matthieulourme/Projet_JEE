@@ -286,4 +286,45 @@ public class DAOContact {
 	         return null;
 		}
 	}
+	
+	public List groupInclusion(final int id) {
+		try {
+			final List groupinclusion = new ArrayList();
+			final Context lContext= new InitialContext();
+			final DataSource lDataSource= (DataSource) lContext.lookup(RESOURCE_JDBC);
+			final Connection lConnection = lDataSource.getConnection();
+			
+			final PreparedStatement lPreparedStatementCreation2 = lConnection.prepareStatement("SELECT * FROM groupe");
+			ResultSet rs = lPreparedStatementCreation2.executeQuery();
+			
+			PreparedStatement lPreparedStatementCreation3;
+			
+			if (rs.next() == false) {
+				
+			}
+			else {
+				do {
+					lPreparedStatementCreation3 = lConnection.prepareStatement("SELECT * FROM contact LEFT JOIN groupe_contact ON contact.id = groupe_contact.contactID LEFT JOIN groupe ON groupe_contact.groupeID = groupe.id WHERE contact.id=? and groupe.id=?");
+		       		lPreparedStatementCreation3.setInt(1, id);
+		       		lPreparedStatementCreation3.setInt(2, rs.getInt("id"));
+		       		ResultSet rs2 = lPreparedStatementCreation3.executeQuery();
+		       		if(!rs2.next()) {
+		       			groupinclusion.add(new Groupe(rs.getInt(1), rs.getString(2), 0));
+		       		}
+		       		else {
+		       			groupinclusion.add(new Groupe(rs.getInt(1), rs.getString(2), rs2.getInt(6)));
+		       		}
+		       		rs2.close();
+				} while(rs.next());
+			}
+			rs.close();
+			return groupinclusion;
+		} catch (NamingException e) {
+			e.printStackTrace();
+	        return null;
+		} catch (SQLException e) {
+			 e.printStackTrace();
+	         return null;
+		}
+	}
 }
