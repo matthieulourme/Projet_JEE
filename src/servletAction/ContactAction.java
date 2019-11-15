@@ -14,6 +14,7 @@ import org.apache.struts.action.ActionMapping;
 
 import actionForm.ContactValidationForm;
 import domain.DAOContact;
+import domain.DAOGroupe;
 
 public class ContactAction extends Action {
 	public ActionForward execute(final ActionMapping pMapping, ActionForm pForm,final HttpServletRequest pRequest, final HttpServletResponse pResponse) {
@@ -24,8 +25,8 @@ public class ContactAction extends Action {
 		final List liste1 = lDAOContact1.infoContact(id);
 		
 		HttpSession session2 = pRequest.getSession();
-		final DAOContact lDAOContact2 = new DAOContact();
-		final List liste2 = lDAOContact2.groupInclusion(id);
+		final DAOGroupe lDAOGroupe = new DAOGroupe();
+		final List liste2 = lDAOGroupe.groupInclusion(id);
 		
 		if(liste1 != null){
             session.setAttribute("infoContact" , liste1);

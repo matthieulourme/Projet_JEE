@@ -13,6 +13,7 @@ import org.apache.struts.action.ActionMapping;
 
 import actionForm.CreerGroupeValidationForm;
 import domain.DAOContact;
+import domain.DAOGroupe;
 
 public class CreerGroupeAction extends Action {
 
@@ -21,14 +22,14 @@ public class CreerGroupeAction extends Action {
 		final int id= lForm.getId();
 		final String nom= lForm.getNom();
 
-		final DAOContact lDAOContact = new DAOContact();
-		final String lError= lDAOContact.addGroup(nom);
+		final DAOGroupe lDAOGroupe = new DAOGroupe();
+		final String lError= lDAOGroupe.addGroup(nom);
 		
 		if(lError == null) {
 			// if no exception is raised,  forward "menu"
 			HttpSession session2 = pRequest.getSession();
-			final DAOContact lDAOContact2 = new DAOContact();
-			final List liste2 = lDAOContact2.allGroup();
+			
+			final List liste2 = lDAOGroupe.allGroup();
 			session2.setAttribute("allGroupe", liste2);
 			return pMapping.findForward("menu");
 		}

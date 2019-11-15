@@ -14,6 +14,7 @@ import org.apache.struts.action.ActionMapping;
 
 import actionForm.LoginValidationForm;
 import domain.DAOContact;
+import domain.DAOGroupe;
 
 public class LoginAction extends Action{
 	
@@ -29,8 +30,8 @@ public class LoginAction extends Action{
 			session1.setAttribute("allContact", liste1);
 			
 			HttpSession session2 = pRequest.getSession();
-			final DAOContact lDAOContact2 = new DAOContact();
-			final List liste2 = lDAOContact2.allGroup();
+			final DAOGroupe lDAOGroupe = new DAOGroupe();
+			final List liste2 = lDAOGroupe.allGroup();
 			session2.setAttribute("allGroupe", liste2);
 			
 			return pMapping.findForward("menu");

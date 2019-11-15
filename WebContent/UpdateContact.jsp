@@ -12,6 +12,22 @@
 
 </head>
 <body>
+
+		<logic:notPresent name="infoContact">
+			<logic:iterate id="contact" name="resRecherche">
+			<html:form action="/UpdateContact">
+			<html:errors/>
+			<input type="hidden" name="id" value="<bean:write name="contact" property="id"/>" />
+			<label>Noms</label> <input type="text" name="nom" value="<bean:write name="contact" property="nom"/>"><br>
+			<label>Prénom</label> <input type="text" name="prenom" value="<bean:write name="contact" property="prenom"/>"><br>
+			<label>Email</label> <input type="email" name="email" value="<bean:write name="contact" property="email"/>"><br>
+			<label>Téléphone</label><input type="text" name="telephone" value="<bean:write name="contact" property="telephone"/>"><br>
+			<label>Adresse</label><input type="text" name="adresse" value="<bean:write name="contact" property="adresse"/>"><br>
+			<html:submit>Envoyer</html:submit>
+			</html:form>
+			</logic:iterate>
+		</logic:notPresent>
+   <logic:present name="infoContact">
 	<logic:iterate id="contact" name="infoContact">
 		<html:form action="/UpdateContact">
 		<html:errors/>
@@ -24,5 +40,6 @@
 			<html:submit>Envoyer</html:submit>
 		</html:form>
 	</logic:iterate>
+	</logic:present>
 </body>
 </html:html>

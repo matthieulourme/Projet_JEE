@@ -11,6 +11,7 @@ import org.apache.struts.action.ActionMapping;
 import actionForm.CreerContactGroupeValidationForm;
 import actionForm.CreerContactValidationForm;
 import domain.DAOContact;
+import domain.DAOGroupe;
 
 public class CreerContactGroupeAction extends Action {
 	
@@ -19,8 +20,8 @@ public class CreerContactGroupeAction extends Action {
 		final int contactid = lForm.getContactID();
 		final int groupeid = lForm.getGroupeID();
 
-		final DAOContact lDAOContact = new DAOContact();
-		final String lError= lDAOContact.addContactGroup(contactid, groupeid);
+		final DAOGroupe lDAOGroupe = new DAOGroupe();
+		final String lError= lDAOGroupe.addContactGroup(contactid, groupeid);
 		
 		if(lError == null) {
 			// if no exception is raised,  forward "menu"
