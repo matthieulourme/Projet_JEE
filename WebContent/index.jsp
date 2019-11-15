@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<html:form  action="/Login">
+	<html:form action="/Login">
 	<html:errors/>
 	<label>Nom</label><input type="text" name="name"><br>
 	<label>Password</label><input type="password" name="password"><br>

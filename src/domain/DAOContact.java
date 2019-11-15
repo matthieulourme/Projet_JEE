@@ -232,13 +232,19 @@ public class DAOContact {
 	
 	public List infoContact(final int id) {
 		try {
+			System.out.println("zer");
 			final List infocontact = new ArrayList();
 			final Context lContext= new InitialContext();
+			System.out.println("wtf");
 			final DataSource lDataSource= (DataSource) lContext.lookup(RESOURCE_JDBC);
+			System.out.println("___");
 			final Connection lConnection = lDataSource.getConnection();
+			System.out.println(lConnection);
 			
+			System.out.println("ok");
 			final PreparedStatement lPreparedStatementCreation2 = lConnection.prepareStatement("SELECT * FROM contact LEFT JOIN telephone ON contact.id = telephone.contactID LEFT JOIN adresse ON contact.id = adresse.contactID WHERE contact.id=?");
 			lPreparedStatementCreation2.setInt(1, id);
+			System.out.println("infoContact: " + id);
 			ResultSet rs = lPreparedStatementCreation2.executeQuery();
 			if (rs.next() == false) {
 				
@@ -252,9 +258,11 @@ public class DAOContact {
 			return infocontact;
 		} catch (NamingException e) {
 			e.printStackTrace();
+			System.out.println(e);
 	        return null;
 		} catch (SQLException e) {
 			 e.printStackTrace();
+			 System.out.println(e);
 	         return null;
 		}
 	}

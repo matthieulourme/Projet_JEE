@@ -24,6 +24,7 @@ public class ContactValidationForm extends ActionForm {
 	
 	public ActionErrors validate( ActionMapping mapping, HttpServletRequest request) {
 		ActionErrors errors= new ActionErrors();
+		System.out.println(id);
 		if(getId()==0) {
 			errors.add("id", new ActionMessage("id pas correct"));
 		}
