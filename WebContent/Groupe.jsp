@@ -2,7 +2,9 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
+<%@ taglib prefix="nested" uri="http://struts.apache.org/tags-nested" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+
 <html:html>
 <head>
 <meta charset="ISO-8859-1">
@@ -13,34 +15,13 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+<logic:iterate id="nomGroupe" name="infoGroupe">
+<h2><bean:write name="nomGroupe" property="nom"/></h2>
+</logic:iterate>
 
 
-<nav class="navbar navbar-expand-sm bg-light">
-		<logic:iterate id="groupe" name="allGroupe">
-			<html:form action="/Groupe">
-							<html:errors/>
-							<input type="hidden" name="id" value="<bean:write name="groupe" property="id"/>" />
-							<a href="Groupe.jsp" onclick="parentNode.submit();"><bean:write name="groupe" property="nom"/></a>
-						</html:form>
-		</logic:iterate>
-</nav>
-	<a href="CreerContact.do"><bean:message key="creer_contact"/></a>
-	<a href="RechercheContact.do"><bean:message key="recherche_contact"/></a>
-	<a href="CreerGroupe.do"><bean:message key="creer_groupe"/></a>
-	<a href="SupprimerGroupe.do"><bean:message key="supp_groupe"/></a>
-	
-	<br>
-	<br>
-	
 
-	
-	<logic:present name="allContact">
-		<logic:empty name="allContact">
-		Vous n'avez aucun contact
-		</logic:empty>
-	</logic:present>
-	
-	<logic:present name="allContact">
+	<logic:present name="allContactGroupe">
 		<h4><bean:message key="titre_contact"/></h4>
 		<table border="2">
 			<thead>
@@ -54,16 +35,10 @@
 				</tr>
 			</thead>
 			<tbody>
-				<logic:iterate id="contact" name="allContact">
+				<logic:iterate id="contact" name="allContactGroupe">
 					<tr>
 						<td> <bean:write name="contact" property="id"/></td>
-						<td>
-						<html:form action="/Contact">
-							<html:errors/>
-							<input type="hidden" name="id" value="<bean:write name="contact" property="id"/>" />
-							<a href="Contact.jsp" onclick="parentNode.submit();"><bean:write name="contact" property="nom"/></a>
-						</html:form>
-						</td>
+						<td> <bean:write name="contact" property="nom"/></td>
 						<td> <bean:write name="contact" property="prenom"/></td>
 						<td> <bean:write name="contact" property="email"/></td>
 						<td> <bean:write name="contact" property="telephone"/></td>
@@ -73,6 +48,6 @@
 			</tbody>
 		</table>
 	</logic:present>
-
+	<a href="menu.jsp" ><bean:message key="retour_menu"/></a>
 </body>
 </html:html>

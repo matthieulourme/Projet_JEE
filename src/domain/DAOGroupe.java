@@ -151,4 +151,65 @@ public class DAOGroupe {
 	         return null;
 		}
 	}
+
+	public List allContactGroupe(int id) {
+		try {
+			final List allContactGroupe = new ArrayList();
+			final Context lContext= new InitialContext();
+			final DataSource lDataSource= (DataSource) lContext.lookup(RESOURCE_JDBC);
+			final Connection lConnection = lDataSource.getConnection();
+			
+			final PreparedStatement lPreparedStatementGroupe = lConnection.prepareStatement("SELECT * FROM contact LEFT JOIN telephone ON contact.id = telephone.contactID LEFT JOIN adresse ON contact.id = adresse.contactID LEFT JOIN groupe_contact ON contact.id=groupe_contact.contactID WHERE groupe_contact.groupeID=?;");
+			lPreparedStatementGroupe.setInt(1, id);
+			ResultSet rs = lPreparedStatementGroupe.executeQuery();
+			if (rs.next() == false) {
+				
+			}
+			else {
+				do {
+					allContactGroupe.add(new Contact(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(6),rs.getString(9)));
+				} while(rs.next());
+			}
+			System.out.println("On est ici"+allContactGroupe);
+			rs.close();
+			return allContactGroupe;
+		} catch (NamingException e) {
+			e.printStackTrace();
+	        return null;
+		} catch (SQLException e) {
+			 e.printStackTrace();
+	         return null;
+		}
+	}
+	
+	public List infoGroupe(int id) {
+		try {
+			final List infoGroupe = new ArrayList();
+			final Context lContext= new InitialContext();
+			final DataSource lDataSource= (DataSource) lContext.lookup(RESOURCE_JDBC);
+			final Connection lConnection = lDataSource.getConnection();
+			
+			final PreparedStatement lPreparedStatementGroupe = lConnection.prepareStatement("SELECT * FROM groupe WHERE id=?");
+			lPreparedStatementGroupe.setInt(1, id);
+			ResultSet rs = lPreparedStatementGroupe.executeQuery();
+			if (rs.next() == false) {
+				
+			}
+			else {
+				do {
+					infoGroupe.add(new Groupe(rs.getInt(1),rs.getString(2)));
+				} while(rs.next());
+			}
+			rs.close();
+			return infoGroupe;
+		} catch (NamingException e) {
+			e.printStackTrace();
+	        return null;
+		} catch (SQLException e) {
+			 e.printStackTrace();
+	         return null;
+		}
+	}
+	
+	
 }
