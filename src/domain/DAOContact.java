@@ -49,6 +49,7 @@ public class DAOContact {
 				lPreparedStatementCreation4.setInt(2, id);
 				lPreparedStatementCreation4.executeUpdate();
 			}
+			lConnection.close();
 			return null;
 		} catch (NamingException e) {
 			return "NamingException : "+e.getMessage();
@@ -67,6 +68,7 @@ public class DAOContact {
 			final PreparedStatement lPreparedStatementSuppression=lConnection.prepareStatement("DELETE FROM contact WHERE id = ?");
 			lPreparedStatementSuppression.setInt(1, id);
 			lPreparedStatementSuppression.executeUpdate();
+			lConnection.close();
 			return null;
 		} catch (NamingException e) {
 			return "NamingException : "+e.getMessage();
@@ -94,6 +96,7 @@ public class DAOContact {
 				} while(rs.next());
 			}
 			rs.close();
+			lConnection.close();
 			return resRecherche;
 		} catch (NamingException e) {
 			e.printStackTrace();
@@ -127,6 +130,7 @@ public class DAOContact {
 			lPreparedStatementUpdate4.setString(1, adresse);
 			lPreparedStatementUpdate4.setInt(2, id);
 			lPreparedStatementUpdate4.executeUpdate();
+			lConnection.close();
 			return null;
 		} catch (NamingException e) {
 			return "NamingException : "+e.getMessage();
@@ -155,6 +159,7 @@ public class DAOContact {
 				} while(rs.next());
 			}
 			rs.close();
+			lConnection.close();
 			return allcontact;
 		} catch (NamingException e) {
 			e.printStackTrace();
@@ -188,6 +193,7 @@ public class DAOContact {
 				} while(rs.next());
 			}
 			rs.close();
+			lConnection.close();
 			return infocontact;
 		} catch (NamingException e) {
 			e.printStackTrace();

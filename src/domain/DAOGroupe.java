@@ -24,6 +24,7 @@ public class DAOGroupe {
 			final PreparedStatement lPreparedStatementCreation1 = lConnection.prepareStatement("INSERT INTO GROUPE(nom) VALUES (?)");
 			lPreparedStatementCreation1.setString(1, nom);
 			lPreparedStatementCreation1.executeUpdate();
+			lConnection.close();
 			return null;
 		} catch (NamingException e) {
 			return "NamingException : "+e.getMessage();
@@ -40,6 +41,7 @@ public class DAOGroupe {
 			final PreparedStatement lPreparedStatementSuppression=lConnection.prepareStatement("DELETE FROM groupe WHERE nom = ?");
 			lPreparedStatementSuppression.setString(1, nom);
 			lPreparedStatementSuppression.executeUpdate();
+			lConnection.close();
 			return null;
 		} catch (NamingException e) {
 			return "NamingException : "+e.getMessage();
@@ -57,6 +59,7 @@ public class DAOGroupe {
 			lPreparedStatementCreation1.setInt(1, contactID);
 			lPreparedStatementCreation1.setInt(2, groupeID);
 			lPreparedStatementCreation1.executeUpdate();
+			lConnection.close();
 			return null;
 		} catch (NamingException e) {
 			return "NamingException : "+e.getMessage();
@@ -74,6 +77,7 @@ public class DAOGroupe {
 			lPreparedStatementCreation1.setInt(1, contactID);
 			lPreparedStatementCreation1.setInt(2, groupeID);
 			lPreparedStatementCreation1.executeUpdate();
+			lConnection.close();
 			return null;
 		} catch (NamingException e) {
 			return "NamingException : "+e.getMessage();
@@ -100,6 +104,7 @@ public class DAOGroupe {
 				} while(rs.next());
 			}
 			rs.close();
+			lConnection.close();
 			return allgroup;
 		} catch (NamingException e) {
 			e.printStackTrace();
@@ -172,6 +177,7 @@ public class DAOGroupe {
 			}
 			System.out.println("On est ici"+allContactGroupe);
 			rs.close();
+			lConnection.close();
 			return allContactGroupe;
 		} catch (NamingException e) {
 			e.printStackTrace();
@@ -201,6 +207,7 @@ public class DAOGroupe {
 				} while(rs.next());
 			}
 			rs.close();
+			lConnection.close();
 			return infoGroupe;
 		} catch (NamingException e) {
 			e.printStackTrace();
