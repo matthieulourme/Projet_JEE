@@ -10,6 +10,7 @@ import org.apache.struts.action.ActionMapping;
 
 import actionForm.SupprimerContactGroupeValidationForm;
 import domain.DAOContact;
+import domain.DAOGroupe;
 
 public class SupprimerContactGroupeAction extends Action {
 
@@ -18,8 +19,8 @@ public class SupprimerContactGroupeAction extends Action {
 		final int contactid = lForm.getContactID();
 		final int groupeid = lForm.getGroupeID();
 
-		final DAOContact lDAOContact = new DAOContact();
-		final String lError= lDAOContact.deleteContactGroup(contactid, groupeid);
+		final DAOGroupe lDAOGroupe = new DAOGroupe();
+		final String lError= lDAOGroupe.deleteContactGroup(contactid, groupeid);
 		
 		if(lError == null) {
 			// if no exception is raised,  forward "menu"
