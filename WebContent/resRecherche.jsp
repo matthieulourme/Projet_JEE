@@ -13,16 +13,16 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-	<logic:notPresent name="resRecherche">
+	<logic:notPresent name="infoContact">
 	</logic:notPresent>
 	
-	<logic:present name="resRecherche">
-		<logic:empty name ="resRecherche">
+	<logic:present name="infoContact">
+		<logic:empty name ="infoContact">
 		Aucun résultat
 		</logic:empty>
 	</logic:present>
 	
-	<logic:present name="resRecherche">
+	<logic:present name="infoContact">
 		<table border="2">
 		<thead>
 			<tr>
@@ -35,7 +35,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<logic:iterate id="contact" name="resRecherche">
+			<logic:iterate id="contact" name="infoContact">
 			<tr>
 				<td> <bean:write name="contact" property="id"/></td>
 				<td> <bean:write name="contact" property="nom"/></td>

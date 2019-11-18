@@ -183,7 +183,6 @@ public class DAOContact {
 			lPreparedStatementCreation2.setInt(1, id);
 			System.out.println("infoContact: " + id);
 			ResultSet rs = lPreparedStatementCreation2.executeQuery();
-			lConnection.close();
 			if (rs.next() == false) {
 				System.out.println("un probleme est survenu");
 			}
