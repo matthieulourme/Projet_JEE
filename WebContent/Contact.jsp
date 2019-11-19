@@ -7,7 +7,7 @@
 <html:html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title><bean:message key="label_contact_titre"/></title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cyborg/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

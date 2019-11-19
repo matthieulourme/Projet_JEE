@@ -7,7 +7,7 @@
 <html:html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title><bean:message key="label_supprimer_groupe_titre"/></title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -16,13 +16,13 @@
 <body>
 		<html:form action="/SupprimerGroupe">
 		<html:errors/>
-		<label>Nom</label>
+		<label><bean:message key="tab_nom"/></label>
 			<select name="nom">
 			<logic:iterate id="groupe" name="allGroupe">
 					<option value="<bean:write name="groupe" property="nom"/>"><bean:write name="groupe" property="nom"/></option>
 			</logic:iterate>
 			</select><br>
-			<html:submit>Envoyer</html:submit>
+			<html:submit><bean:message key="form_envoyer"/></html:submit>
 		</html:form>
 </body>
 </html:html>

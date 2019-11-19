@@ -6,7 +6,7 @@
 <html:html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title><bean:message key="label_menu_titre"/></title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cosmo/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -19,7 +19,7 @@
 <ul class="navbar-nav mr-auto">
  
   <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><strong>Vos groupes</strong></a>
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><strong><bean:message key="afficher_groupe"/></strong></a>
     <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 39px, 0px);">
      	<logic:iterate id="groupe" name="allGroupe">
 						<html:form styleClass="form-inline my-2 my-lg-0" action="/Groupe">
@@ -58,7 +58,7 @@
 	
 	<logic:present name="allContact">
 		<logic:empty name="allContact">
-		Vous n'avez aucun contact
+			<bean:message key="no_conatct"/>
 		</logic:empty>
 	</logic:present>
 	
@@ -67,7 +67,7 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th scope="col">#</th>
+					<th scope="col"><bean:message key="tab_numero"/></th>
 					<th scope="col"><bean:message key="tab_nom"/></th>
 					<th scope="col"><bean:message key="tab_prenom"/></th>
 					<th scope="col"><bean:message key="tab_email"/></th>

@@ -8,7 +8,7 @@
 <html:html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title><bean:message key="label_groupe_titre"/></title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -22,11 +22,11 @@
 
 
 	<logic:present name="allContactGroupe">
-		<h4><bean:message key="titre_contact"/></h4>
+		<h4><bean:message key="titre_contact_groupe"/></h4>
 		<table border="2">
 			<thead>
 				<tr>
-					<th>#</th>
+					<th><bean:message key="tab_numero"/></th>
 					<th><bean:message key="tab_nom"/></th>
 					<th><bean:message key="tab_prenom"/></th>
 					<th><bean:message key="tab_email"/></th>

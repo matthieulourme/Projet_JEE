@@ -7,7 +7,7 @@
 <html:html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title><bean:message key="label_creer_contact_groupe_titre"/></title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -16,7 +16,7 @@
 <body>
 	<logic:present name="groupInclusion">
 		<logic:empty name="groupInclusion">
-		Aucun groupe n'a été encore crée
+		<bean:message key="no_groupe"/>
 		</logic:empty>
 	</logic:present>
 	
@@ -24,9 +24,9 @@
 		<table border="2">
 			<thead>
 				<tr>
-					<th>#</th>
-					<th>Nom</th>
-					<th>Action</th>
+					<th><bean:message key="tab_numero"/></th>
+					<th><bean:message key="tab_nom"/></th>
+					<th><bean:message key="tab_action"/></th>
 				</tr>
 			</thead>
 			<tbody>

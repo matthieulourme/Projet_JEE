@@ -6,7 +6,7 @@
 
 <html:html>
 	<head>
-		<title> Resultat de la recherche</title>
+		<title><bean:message key="label_resultat_recherche_titre"/></title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -18,7 +18,7 @@
 	
 	<logic:present name="infoContact">
 		<logic:empty name ="infoContact">
-		Aucun résultat
+			<bean:message key="no_res"/>
 		</logic:empty>
 	</logic:present>
 	
@@ -26,7 +26,7 @@
 		<table border="2">
 		<thead>
 			<tr>
-				<th>#</th>
+				<th><bean:message key="tab_numero"/></th>
 				<th><bean:message key="tab_nom"/></th>
 				<th><bean:message key="tab_prenom"/></th>
 				<th><bean:message key="tab_email"/></th>
