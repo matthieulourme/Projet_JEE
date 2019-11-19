@@ -17,6 +17,8 @@
 	<html:form action="/RechercheContact">
 	<html:errors/>
 		<label><bean:message key="tab_email"/></label> <input type="text" name="mail"><br>
+			<label><bean:message key="tab_nom"/></label> <input type="text" name="nom"><br>
+				<label><bean:message key="tab_prenom"/></label> <input type="text" name="prenom"><br>
 		<html:submit><bean:message key="form_envoyer"/></html:submit>
 	</html:form>
 </body>

@@ -38,7 +38,11 @@
 			<logic:iterate id="contact" name="infoContact">
 			<tr>
 				<td> <bean:write name="contact" property="id"/></td>
-				<td> <bean:write name="contact" property="nom"/></td>
+				<td> <html:form action="/Contact">
+							<html:errors/>
+							<input type="hidden" name="id" value="<bean:write name="contact" property="id"/>" />
+							<a href="Contact.jsp" onclick="parentNode.submit();"><bean:write name="contact" property="nom"/></a>
+						</html:form></td>
 				<td> <bean:write name="contact" property="prenom"/></td>
 				<td> <bean:write name="contact" property="email"/></td>
 				<td> <bean:write name="contact" property="telephone"/></td>
@@ -49,14 +53,7 @@
 		</tbody>
 		</table>
 	</logic:present>
-				<html:form action="/SupprimerContact">
-					<html:errors/>
-					<input type="hidden" name="id" value="<bean:write name="contact" property="id"/>" />
-					<input type="hidden" name="email" value="<bean:write name="contact" property="email"/>" />
-					<a href="menu.jsp" onclick="parentNode.submit();"><bean:message key="supp_contact"/></a>
-				</html:form>
 				
-				<a href="UpdateContact.do?userId=<bean:write name="contact" property="id"/>"><bean:message key="update_contact"/></a>
 		<a href="menu.jsp" ><bean:message key="retour_menu"/></a>
 	</body>
 </html:html>

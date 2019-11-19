@@ -77,14 +77,16 @@ public class DAOContact {
 		}
 	}
 	
-	public ArrayList  researchContact(final String mail) {
+	public ArrayList  researchContact(final String mail,final String nom, final String prenom) {
 		try {
 			final ArrayList resRecherche= new ArrayList();
 			final Context lContext= new InitialContext();
 			final DataSource lDataSource= (DataSource) lContext.lookup(RESOURCE_JDBC);
 			final Connection lConnection = lDataSource.getConnection();
-			final PreparedStatement lPreparedStatementRecherche = lConnection.prepareStatement("SELECT * FROM contact LEFT JOIN telephone ON contact.id = telephone.contactID LEFT JOIN adresse ON contact.id = adresse.contactID WHERE contact.mail=?");
-			lPreparedStatementRecherche.setString(1, mail);
+		
+			if(!mail.isEmpty()) {
+			final PreparedStatement lPreparedStatementRecherche = lConnection.prepareStatement("SELECT * FROM contact LEFT JOIN telephone ON contact.id = telephone.contactID LEFT JOIN adresse ON contact.id = adresse.contactID WHERE contact.mail LIKE \'"+mail+"%\'");
+			//lPreparedStatementRecherche.setString(1, mail);
 			ResultSet rs = lPreparedStatementRecherche.executeQuery();
 			
 			if (rs.next() == false) {
@@ -96,7 +98,61 @@ public class DAOContact {
 				} while(rs.next());
 			}
 			rs.close();
+			}
+			
+			if(mail.isEmpty() && !nom.isEmpty() && !prenom.isEmpty()) {
+				final PreparedStatement lPreparedStatementRecherche = lConnection.prepareStatement("SELECT * FROM contact LEFT JOIN telephone ON contact.id = telephone.contactID LEFT JOIN adresse ON contact.id = adresse.contactID WHERE contact.name LIKE \'"+nom+"%\' AND contact.firstname LIKE \'"+prenom+"%\'");
+				//lPreparedStatementRecherche.setString(1, nom);
+				//lPreparedStatementRecherche.setString(2, prenom);
+				ResultSet rs = lPreparedStatementRecherche.executeQuery();
+				
+				if (rs.next() == false) {
+					
+				}
+				else {
+					do {
+						resRecherche.add(new Contact(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(6),rs.getString(9)));
+					} while(rs.next());
+				}
+				rs.close();
+			}
+			
+			if(mail.isEmpty() && !nom.isEmpty() && prenom.isEmpty()) {
+				final PreparedStatement lPreparedStatementRecherche = lConnection.prepareStatement("SELECT * FROM contact LEFT JOIN telephone ON contact.id = telephone.contactID LEFT JOIN adresse ON contact.id = adresse.contactID WHERE contact.name LIKE \'"+nom+"%\'");
+				//lPreparedStatementRecherche.setString(1, nom);
+				ResultSet rs = lPreparedStatementRecherche.executeQuery();
+				
+				if (rs.next() == false) {
+					
+				}
+				else {
+					do {
+						resRecherche.add(new Contact(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(6),rs.getString(9)));
+					} while(rs.next());
+				}
+				rs.close();
+			}
+			
+			if(mail.isEmpty() && nom.isEmpty() && !prenom.isEmpty()) {
+				final PreparedStatement lPreparedStatementRecherche = lConnection.prepareStatement("SELECT * FROM contact LEFT JOIN telephone ON contact.id = telephone.contactID LEFT JOIN adresse ON contact.id = adresse.contactID WHERE  contact.firstname LIKE \'"+prenom+"%\'");
+				lPreparedStatementRecherche.setString(1, prenom);
+				ResultSet rs = lPreparedStatementRecherche.executeQuery();
+				
+				if (rs.next() == false) {
+					
+				}
+				else {
+					do {
+						resRecherche.add(new Contact(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(6),rs.getString(9)));
+					} while(rs.next());
+				}
+				System.out.println("Ici :"+resRecherche);
+				rs.close();
+			}
+			
+			
 			lConnection.close();
+			System.out.println("Resultat Recherche :"+resRecherche);
 			return resRecherche;
 		} catch (NamingException e) {
 			e.printStackTrace();
