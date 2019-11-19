@@ -30,10 +30,10 @@ public class ContactAction extends Action {
 		
 		if(liste1 != null){
 			//System.out.println(liste1);
-            session.setAttribute("infoContact" , liste1);
+			session.setAttribute("infoContact" , liste1);
         }
 		if(liste2 != null){
-            session.setAttribute("groupInclusion" , liste2);
+			session.setAttribute("groupInclusion" , liste2);
         }
         return (pMapping.findForward("contact"));
 	}

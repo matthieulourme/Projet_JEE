@@ -23,7 +23,7 @@ public class RechercheContactAction extends Action  {
 		final ArrayList lError= lDAOContact.researchContact(mail);
 		
 		if(lError  != null){
-            session.setAttribute("infoContact" , lError);
+			session.setAttribute("infoContact" , lError);
         }
         return (pMapping.findForward("recherche"));
 

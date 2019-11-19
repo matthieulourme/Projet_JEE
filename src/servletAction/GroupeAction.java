@@ -29,10 +29,10 @@ public class GroupeAction extends Action {
 		
 		
 		if(liste1 != null){
-            session.setAttribute("allContactGroupe" , liste1);
+			session.setAttribute("allContactGroupe" , liste1);
         }
 		if(liste2 != null){
-            session.setAttribute("infoGroupe" , liste2);
+			session2.setAttribute("infoGroupe" , liste2);
         }
 		
         return (pMapping.findForward("groupe"));

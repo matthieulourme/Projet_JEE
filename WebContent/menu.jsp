@@ -83,7 +83,7 @@
 						<html:form action="/Contact">
 							<html:errors/>
 							<input type="hidden" name="id" value="<bean:write name="contact" property="id"/>" />
-							<a href="Contact.jsp" onclick="parentNode.submit();"><bean:write name="contact" property="nom"/></a>
+							<a href="Contact.do" onclick="parentNode.submit();"><bean:write name="contact" property="nom"/></a>
 						</html:form>
 						</td>
 						<td> <bean:write name="contact" property="prenom"/></td>
