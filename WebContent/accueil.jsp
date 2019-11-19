@@ -6,14 +6,16 @@
 <head>
 <meta charset="ISO-8859-1">
 <title><bean:message key="label_accueil_titre"/></title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/style.css"  type="text/css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cosmo/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+ 
 </head>
 <body>
-	<a href="Login.do"><bean:message key="label_connexion"/></a>
 	
+<a href="Login.do" class="btn btn-outline-primary"><bean:message key="label_connexion"/></a>
 	
 	
 	
