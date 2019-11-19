@@ -27,7 +27,7 @@ public class ContactAction extends Action {
 		
 		final DAOGroupe lDAOGroupe = new DAOGroupe();
 		final List<?> liste2 = lDAOGroupe.groupInclusion(id);
-		
+		System.out.println("liste1"+liste1);
 		if(liste1 != null){
 			//System.out.println(liste1);
 			session.setAttribute("infoContact" , liste1);
