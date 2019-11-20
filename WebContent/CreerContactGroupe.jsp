@@ -47,7 +47,7 @@
 			</thead>
 			<tbody>
 				<logic:iterate id="groupe" name="groupInclusion">
-			      <tr>
+			      <tr class="table-primary">
 			      	<td scope="row"><bean:write name="groupe" property="id"/></td>
 			      	<td scope="row"><bean:write name="groupe" property="nom"/></td>
 			      	<td scope="row">
