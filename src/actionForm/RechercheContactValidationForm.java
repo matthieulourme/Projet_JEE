@@ -42,8 +42,8 @@ public class RechercheContactValidationForm extends ActionForm {
 	
 	public ActionErrors validate( ActionMapping mapping, HttpServletRequest request) {
 		ActionErrors errors= new ActionErrors();
-		if(getMail()==null || getNom()==null || getPrenom()==null) {
-			errors.add("mail", new ActionMessage("Rentrez au moins un champ"));
+		if((getMail()==null || getMail().length()<1) && (getNom()==null || getNom().length()<1) && (getPrenom()==null || getPrenom().length()<1)) {
+			errors.add("mail", new ActionMessage("error.recherche"));
 		}
 		return errors;
 	}

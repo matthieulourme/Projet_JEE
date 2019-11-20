@@ -80,7 +80,7 @@
 
 	<action path="/RechercheContact" forward="/RechercheContact.jsp"/>
 	
-	<action path="/RechercheContact"
+	<action path="/RechercheContact_"
 				type="servletAction.RechercheContactAction"
 				name="RechercheContactValidationForm" scope="request"
 				

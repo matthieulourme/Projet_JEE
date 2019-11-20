@@ -30,8 +30,8 @@
 </nav>
 <br>
 <body>
-	<html:form action="/RechercheContact">
-	<html:errors/>
+	<html:form action="/RechercheContact_">
+	<html:errors/><br>
 		<label><bean:message key="tab_email"/></label> <input type="text" name="mail"><br>
 			<label><bean:message key="tab_nom"/></label> <input type="text" name="nom"><br>
 				<label><bean:message key="tab_prenom"/></label> <input type="text" name="prenom"><br>

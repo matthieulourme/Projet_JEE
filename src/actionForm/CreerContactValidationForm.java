@@ -1,4 +1,6 @@
 package actionForm;
+import java.util.regex.Pattern;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts.action.ActionErrors;
@@ -90,6 +92,12 @@ public class CreerContactValidationForm extends ActionForm {
 		}
 		if(getAdresse()==null || getAdresse().length()<1) {
 			errors.add("adresse", new ActionMessage("error.adr"));
+		}
+		if(getTelephone()!=null && !(getTelephone().length()<1) && !getTelephone().matches("[0-9]+")) {
+			errors.add("telephone", new ActionMessage("error.tel.regex"));
+		}
+		if(getTelephone()!=null && !(getTelephone().length()<1) && getTelephone().matches("[0-9]+") && getTelephone().length() != 10) {
+			errors.add("telephone", new ActionMessage("error.tel.taille"));
 		}
 		System.out.println(getNom());
 		System.out.println(errors.size());

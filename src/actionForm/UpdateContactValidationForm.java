@@ -89,6 +89,12 @@ public class UpdateContactValidationForm extends ActionForm {
 		if(getAdresse()==null || getAdresse().length()<1) {
 			errors.add("adresse", new ActionMessage("error.adr"));
 		}
+		if(getTelephone()!=null && !(getTelephone().length()<1) && !getTelephone().matches("[0-9]+")) {
+			errors.add("telephone", new ActionMessage("error.tel.regex"));
+		}
+		if(getTelephone()!=null && !(getTelephone().length()<1) && getTelephone().matches("[0-9]+") && getTelephone().length() != 10) {
+			errors.add("telephone", new ActionMessage("error.tel.taille"));
+		}
 		return errors;
 	}
 }

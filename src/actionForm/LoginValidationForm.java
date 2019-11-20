@@ -39,6 +39,10 @@ public class LoginValidationForm extends ActionForm {
 		if(getPassword()==null || getPassword().length()<1) {
 			errors.add("password", new ActionMessage("error.mdp"));
 		}
+		if(getName().length()>0 && getPassword().length()>0 && !getName().equals(getPassword())) {
+			errors.add("login", new ActionMessage("error.login"));
+			System.out.println("hello");
+		}
 		System.out.println(errors.size());
 		return errors;
 	}
