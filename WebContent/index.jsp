@@ -12,15 +12,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="/css/back.css"  type="text/css">
+
 </head>
 <body>
+<div class="formulaire">
 	<html:form action="/Login_">
 	<label><bean:message key="tab_nom"/></label><input type="text" name="name"><html:errors property="name" /><br>
 	<label><bean:message key="tab_mdp"/></label><input type="password" name="password"><html:errors property="password" /><br>
 	<html:submit><bean:message key="form_envoyer"/></html:submit>
 	
 	</html:form>
-	
+</div>	
 </body>
 </html:html>

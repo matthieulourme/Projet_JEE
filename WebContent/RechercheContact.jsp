@@ -13,7 +13,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/css/back.css"  type="text/css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 <a class="navbar-brand" href="#"><bean:message key="label_recherche_contact_titre"/></a>
@@ -30,6 +30,7 @@
 </nav>
 <br>
 <body>
+	<div class="formulaire">
 	<html:form action="/RechercheContact">
 	<html:errors/>
 		<label><bean:message key="tab_email"/></label> <input type="text" name="mail"><br>
@@ -37,5 +38,6 @@
 				<label><bean:message key="tab_prenom"/></label> <input type="text" name="prenom"><br>
 		<html:submit><bean:message key="form_envoyer"/></html:submit>
 	</html:form>
+	</div>
 </body>
 </html:html>
