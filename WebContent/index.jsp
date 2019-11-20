@@ -13,10 +13,9 @@
 </head>
 <body>
 
-	<html:form action="/Login">
-	<html:errors/>
-	<label><bean:message key="tab_nom"/></label><input type="text" name="name"><br>
-	<label><bean:message key="tab_mdp"/></label><input type="password" name="password"><br>
+	<html:form action="/Login_">
+	<label><bean:message key="tab_nom"/></label><input type="text" name="name"><html:errors property="name" /><br>
+	<label><bean:message key="tab_mdp"/></label><input type="password" name="password"><html:errors property="password" /><br>
 	<html:submit><bean:message key="form_envoyer"/></html:submit>
 	
 	</html:form>

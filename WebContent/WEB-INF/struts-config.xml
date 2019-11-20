@@ -23,7 +23,7 @@
 
 	<action path="/CreerContact" forward="/CreerContact.jsp" />
 
-	<action path="/CreerContact" 
+	<action path="/CreerContact_" 
 				type="servletAction.CreerContactAction"
 				name="CreerContactValidationForm" scope="request" 
 				
@@ -34,7 +34,7 @@
 	
 	<action path="/Login" forward="/index.jsp" />
 
-	<action path="/Login" 
+	<action path="/Login_" 
 				type="servletAction.LoginAction"
 				name="LoginValidationForm" scope="request" 
 				
@@ -57,7 +57,7 @@
 	
 	<action path="/UpdateContact" forward="/UpdateContact.jsp" />
 
-	<action path="/UpdateContact" 
+	<action path="/UpdateContact_" 
 				type="servletAction.UpdateContactAction"
 				name="UpdateContactValidationForm" scope="request" 
 				
@@ -68,7 +68,7 @@
 	
 	<action path="/CreerGroupe" forward="/CreerGroupe.jsp" />
 
-	<action path="/CreerGroupe" 
+	<action path="/CreerGroupe_" 
 				type="servletAction.CreerGroupeAction"
 				name="CreerGroupeValidationForm" scope="request" 
 				

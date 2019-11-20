@@ -19,14 +19,13 @@
 	
    <logic:present name="infoContact">
 	<logic:iterate id="contact" name="infoContact">
-		<html:form action="/UpdateContact">
-		<html:errors/>
+		<html:form action="/UpdateContact_">
 			<input type="hidden" name="id" value="<bean:write name="contact" property="id"/>" />
-			<label><bean:message key="tab_nom"/></label> <input type="text" name="nom" value="<bean:write name="contact" property="nom"/>"><br>
-			<label><bean:message key="tab_prenom"/></label> <input type="text" name="prenom" value="<bean:write name="contact" property="prenom"/>"><br>
-			<label><bean:message key="tab_email"/></label> <input type="email" name="email" value="<bean:write name="contact" property="email"/>"><br>
-			<label><bean:message key="tab_tel"/></label><input type="text" name="telephone" value="<bean:write name="contact" property="telephone"/>"><br>
-			<label><bean:message key="tab_adr"/></label><input type="text" name="adresse" value="<bean:write name="contact" property="adresse"/>"><br>
+			<label><bean:message key="tab_nom"/></label> <input type="text" name="nom" value="<bean:write name="contact" property="nom"/>"> <html:errors property="nom" /><br>
+			<label><bean:message key="tab_prenom"/></label> <input type="text" name="prenom" value="<bean:write name="contact" property="prenom"/>"> <html:errors property="prenom" /><br>
+			<label><bean:message key="tab_email"/></label> <input type="email" name="email" value="<bean:write name="contact" property="email"/>"> <html:errors property="email" /><br>
+			<label><bean:message key="tab_tel"/></label><input type="text" name="telephone" value="<bean:write name="contact" property="telephone"/>"> <html:errors property="telephone" /><br>
+			<label><bean:message key="tab_adr"/></label><input type="text" name="adresse" value="<bean:write name="contact" property="adresse"/>"> <html:errors property="adresse" /><br>
 			<html:submit><bean:message key="form_envoyer"/></html:submit>
 		</html:form>
 	</logic:iterate>

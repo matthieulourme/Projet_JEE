@@ -14,13 +14,12 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<html:form action="/CreerContact">
-	<html:errors/>
-		<label><bean:message key="tab_nom"/></label> <input type="text" name="nom"><br>
-		<label><bean:message key="tab_prenom"/></label> <input type="text" name="prenom"><br>
-		<label><bean:message key="tab_email"/></label> <input type="email" name="email"><br>
-		<label><bean:message key="tab_tel"/></label><input type="text" name="telephone"><br>
-		<label><bean:message key="tab_adr"/></label><input type="text" name="adresse"><br>
+	<html:form action="/CreerContact_">
+		<label><bean:message key="tab_nom"/></label> <input type="text" name="nom"> <html:errors property="nom" /><br>
+		<label><bean:message key="tab_prenom"/></label> <input type="text" name="prenom"> <html:errors property="prenom" /><br>
+		<label><bean:message key="tab_email"/></label> <input type="email" name="email"> <html:errors property="email" /><br>
+		<label><bean:message key="tab_tel"/></label><input type="text" name="telephone"> <html:errors property="telephone" /><br>
+		<label><bean:message key="tab_adr"/></label><input type="text" name="adresse"> <html:errors property="adresse" /><br>
 		<html:submit><bean:message key="form_envoyer"/></html:submit>
 	</html:form>
 </body>

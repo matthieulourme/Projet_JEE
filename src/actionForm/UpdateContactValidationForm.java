@@ -75,19 +75,19 @@ public class UpdateContactValidationForm extends ActionForm {
 	public ActionErrors validate( ActionMapping mapping, HttpServletRequest request) {
 		ActionErrors errors= new ActionErrors();
 		if(getNom()==null || getNom().length()<1) {
-			errors.add("nom", new ActionMessage("Nom pas correct"));
+			errors.add("nom", new ActionMessage("error.nom"));
 		}
 		if(getPrenom()==null || getPrenom().length()<1) {
-			errors.add("prenom", new ActionMessage("prenom pas correct"));
+			errors.add("prenom", new ActionMessage("error.prenom"));
 		}
 		if(getEmail()==null || getEmail().length()<1) {
-			errors.add("email", new ActionMessage("Email pas correct"));
+			errors.add("email", new ActionMessage("error.email"));
 		}
 		if(getTelephone()==null || getTelephone().length()<1) {
-			errors.add("telephone", new ActionMessage("Telephone pas correct"));
+			errors.add("telephone", new ActionMessage("error.tel"));
 		}
 		if(getAdresse()==null || getAdresse().length()<1) {
-			errors.add("adresse", new ActionMessage("Adresse pas correct"));
+			errors.add("adresse", new ActionMessage("error.adr"));
 		}
 		return errors;
 	}

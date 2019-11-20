@@ -14,9 +14,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<html:form action="/CreerGroupe">
-	<html:errors/>
-		<label><bean:message key="tab_nom"/></label> <input type="text" name="nom"><br>
+	<html:form action="/CreerGroupe_">
+		<label><bean:message key="tab_nom"/></label> <input type="text" name="nom"><html:errors property="nom" /><br>
 		<html:submit><bean:message key="form_envoyer"/></html:submit>
 	</html:form>
 </body>

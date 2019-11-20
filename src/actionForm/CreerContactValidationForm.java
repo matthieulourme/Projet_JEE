@@ -7,12 +7,15 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
 public class CreerContactValidationForm extends ActionForm {
-	private int id=0;
-	private String nom=null;
-	private String prenom=null;
-	private String email=null;
-	private String telephone=null;
-	private String adresse=null;
+	
+	private static final long serialVersionUID = 1L;
+	
+	private int id;
+	private String nom;
+	private String prenom;
+	private String email;
+	private String telephone;
+	private String adresse;
 	
 	public int getId() {
 		return id;
@@ -74,20 +77,22 @@ public class CreerContactValidationForm extends ActionForm {
 	public ActionErrors validate( ActionMapping mapping, HttpServletRequest request) {
 		ActionErrors errors= new ActionErrors();
 		if(getNom()==null || getNom().length()<1) {
-			errors.add("nom", new ActionMessage("Nom pas correct"));
+			errors.add("nom", new ActionMessage("error.nom"));
 		}
 		if(getPrenom()==null || getPrenom().length()<1) {
-			errors.add("prenom", new ActionMessage("prenom pas correct"));
+			errors.add("prenom", new ActionMessage("error.prenom"));
 		}
 		if(getEmail()==null || getEmail().length()<1) {
-			errors.add("email", new ActionMessage("Email pas correct"));
+			errors.add("email", new ActionMessage("error.email"));
 		}
 		if(getTelephone()==null || getTelephone().length()<1) {
-			errors.add("telephone", new ActionMessage("Telephone pas correct"));
+			errors.add("telephone", new ActionMessage("error.tel"));
 		}
 		if(getAdresse()==null || getAdresse().length()<1) {
-			errors.add("adresse", new ActionMessage("Adresse pas correct"));
+			errors.add("adresse", new ActionMessage("error.adr"));
 		}
+		System.out.println(getNom());
+		System.out.println(errors.size());
 		return errors;
 	}
 }

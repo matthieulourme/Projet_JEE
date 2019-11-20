@@ -35,7 +35,7 @@ public class CreerGroupeValidationForm extends ActionForm {
 	public ActionErrors validate( ActionMapping mapping, HttpServletRequest request) {
 		ActionErrors errors= new ActionErrors();
 		if(getNom()==null || getNom().length()<1) {
-			errors.add("nom", new ActionMessage("Nom pas correct"));
+			errors.add("nom", new ActionMessage("error.nom"));
 		}
 		return errors;
 	}

@@ -8,6 +8,9 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
 public class LoginValidationForm extends ActionForm {
+	
+	private static final long serialVersionUID = 1L;
+	
 	private String name=null;
 	private String password=null;
 	public String getName() {
@@ -31,12 +34,12 @@ public class LoginValidationForm extends ActionForm {
 	public ActionErrors validate( ActionMapping mapping, HttpServletRequest request) {
 		ActionErrors errors= new ActionErrors();
 		if(getName()==null || getName().length()<1) {
-			errors.add("name", new ActionMessage("Username pas correct"));
+			errors.add("name", new ActionMessage("error.nom"));
 		}
 		if(getPassword()==null || getPassword().length()<1) {
-			errors.add("password", new ActionMessage("password pas correct"));
+			errors.add("password", new ActionMessage("error.mdp"));
 		}
-		
+		System.out.println(errors.size());
 		return errors;
 	}
 }
