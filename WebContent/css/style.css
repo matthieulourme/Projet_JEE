@@ -1,25 +1,29 @@
-form {
-   position:absolute;
-   top:50%;
-   left:50%;
-   width:500px; /* A toi de donner la bonne largeur */
-   height:200px; /* A toi de donner la bonne hauteur */
-   margin-left:-150px; /* -largeur/2 */
-   margin-top:-100px; /* -hauteur/2 */
-}
 
-form label {
+
+.formulaire {
 	
 	font-weight: bold;
 	text-align: right;
 	vertical-align: middle;
 	display: inline-block;
-  width: 120px;
-  text-align: right;
+   position:absolute;
+   top:50%;
+   left:50%;
+   width:350px; /* A toi de donner la bonne largeur */
+   height:200px; /* A toi de donner la bonne hauteur */
+   margin-left:-200px; /* -largeur/2 */
+   margin-top:-100px; /* -hauteur/2 */
 }
 body {
+	
+	background-image: url("images/back.jpg");
 	background-color: #D2FBFC;
 	background-size: cover;
+}
+
+.centrer{
+	display: block;
+   margin : auto;
 }
 
 
