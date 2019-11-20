@@ -30,6 +30,11 @@
 </nav>
 <br>
 <body>
+	<logic:present name="allGroupe">
+		<logic:empty name="allGroupe">
+			<bean:message key="no_groupe"/>
+		</logic:empty>
+	</logic:present>
 <div class="formulaire">
 		<html:form action="/SupprimerGroupe">
 		<html:errors/>
