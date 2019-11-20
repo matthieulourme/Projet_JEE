@@ -37,6 +37,7 @@
 </nav>
 <br>
 <body>
+<div class="affcontact">
 	<logic:iterate id="contact" name="infoContact">
 		<h2><strong><bean:write name="contact" property="nom"/> <bean:write name="contact" property="prenom"/></strong></h2>
 		<br><em><bean:message key="tab_email"/></em>: <bean:write name="contact" property="email"/><br>
@@ -49,5 +50,6 @@
 			<a href="menu.jsp" onclick="parentNode.submit();"><strong><bean:message key="supp_contact"/></strong></a>
 		</html:form>
 	</logic:iterate>
+	</div>
 </body>
 </html:html>

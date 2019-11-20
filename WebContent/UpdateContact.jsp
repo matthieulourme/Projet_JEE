@@ -32,7 +32,7 @@
 <br>
 <body>
 
-	
+	<div class="formulaire">
    <logic:present name="infoContact">
 	<logic:iterate id="contact" name="infoContact">
 		<html:form action="/UpdateContact_">
@@ -51,5 +51,6 @@
 		</html:form>
 	</logic:iterate>
 	</logic:present>
+	</div>
 </body>
 </html:html>
