@@ -39,8 +39,8 @@
 <body>
 <div class="affcontact">
 	<logic:iterate id="contact" name="infoContact">
-		<h2><strong><bean:write name="contact" property="nom"/> <bean:write name="contact" property="prenom"/></strong></h2>
-		<br><em><bean:message key="tab_email"/></em>: <bean:write name="contact" property="email"/><br>
+		<h1><strong><bean:write name="contact" property="nom"/> <bean:write name="contact" property="prenom"/></strong></h1>
+		<h2><br><em><bean:message key="tab_email"/></em>: <bean:write name="contact" property="email"/><br>
 		<br><em><bean:message key="tab_tel"/></em>: <bean:write name="contact" property="telephone"/><br>
 		<br><em><bean:message key="tab_adr"/></em>: <bean:write name="contact" property="adresse"/><br>
 		<html:form action="/SupprimerContact">
@@ -48,7 +48,7 @@
 			<input type="hidden" name="id" value="<bean:write name="contact" property="id"/>" />
 			<input type="hidden" name="email" value="<bean:write name="contact" property="email"/>" />
 			<a href="menu.jsp" onclick="parentNode.submit();"><strong><bean:message key="supp_contact"/></strong></a>
-		</html:form>
+		</html:form></h2>
 	</logic:iterate>
 	</div>
 </body>
