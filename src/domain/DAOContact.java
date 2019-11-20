@@ -84,7 +84,7 @@ public class DAOContact {
 			final DataSource lDataSource= (DataSource) lContext.lookup(RESOURCE_JDBC);
 			final Connection lConnection = lDataSource.getConnection();
 		
-			if(!mail.isEmpty()) {
+			if(!mail.isEmpty()&& nom.isEmpty() && prenom.isEmpty()) {
 			final PreparedStatement lPreparedStatementRecherche = lConnection.prepareStatement("SELECT * FROM contact LEFT JOIN telephone ON contact.id = telephone.contactID LEFT JOIN adresse ON contact.id = adresse.contactID WHERE contact.mail LIKE \'"+mail+"%\'");
 			//lPreparedStatementRecherche.setString(1, mail);
 			ResultSet rs = lPreparedStatementRecherche.executeQuery();
@@ -99,6 +99,63 @@ public class DAOContact {
 			}
 			rs.close();
 			}
+			
+			
+			
+			if(!mail.isEmpty() && nom.isEmpty() && !prenom.isEmpty()) {
+				final PreparedStatement lPreparedStatementRecherche = lConnection.prepareStatement("SELECT * FROM contact LEFT JOIN telephone ON contact.id = telephone.contactID LEFT JOIN adresse ON contact.id = adresse.contactID WHERE contact.mail LIKE \'"+mail+"%\' AND contact.firstname LIKE \'"+prenom+"%\'");
+				//lPreparedStatementRecherche.setString(1, mail);
+				ResultSet rs = lPreparedStatementRecherche.executeQuery();
+				
+				if (rs.next() == false) {
+					
+				}
+				else {
+					do {
+						resRecherche.add(new Contact(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(6),rs.getString(9)));
+					} while(rs.next());
+				}
+				rs.close();
+				}
+			
+			
+			
+			if(!mail.isEmpty()&& !nom.isEmpty() && !prenom.isEmpty()) {
+				final PreparedStatement lPreparedStatementRecherche = lConnection.prepareStatement("SELECT * FROM contact LEFT JOIN telephone ON contact.id = telephone.contactID LEFT JOIN adresse ON contact.id = adresse.contactID WHERE contact.mail LIKE \'"+mail+"%\' AND contact.name LIKE \'"+nom+"%\' AND contact.firstname LIKE \'"+prenom+"%\'");
+				//lPreparedStatementRecherche.setString(1, mail);
+				ResultSet rs = lPreparedStatementRecherche.executeQuery();
+				
+				if (rs.next() == false) {
+					
+				}
+				else {
+					do {
+						resRecherche.add(new Contact(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(6),rs.getString(9)));
+					} while(rs.next());
+				}
+				rs.close();
+				}
+			
+			
+			
+			if(!mail.isEmpty()&& !nom.isEmpty() && prenom.isEmpty()) {
+				final PreparedStatement lPreparedStatementRecherche = lConnection.prepareStatement("SELECT * FROM contact LEFT JOIN telephone ON contact.id = telephone.contactID LEFT JOIN adresse ON contact.id = adresse.contactID WHERE contact.mail LIKE \'"+mail+"%\' AND contact.name LIKE \'"+nom+"%\'");
+				//lPreparedStatementRecherche.setString(1, mail);
+				ResultSet rs = lPreparedStatementRecherche.executeQuery();
+				
+				if (rs.next() == false) {
+					
+				}
+				else {
+					do {
+						resRecherche.add(new Contact(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(6),rs.getString(9)));
+					} while(rs.next());
+				}
+				rs.close();
+				}
+			
+			
+			
 			
 			if(mail.isEmpty() && !nom.isEmpty() && !prenom.isEmpty()) {
 				final PreparedStatement lPreparedStatementRecherche = lConnection.prepareStatement("SELECT * FROM contact LEFT JOIN telephone ON contact.id = telephone.contactID LEFT JOIN adresse ON contact.id = adresse.contactID WHERE contact.name LIKE \'"+nom+"%\' AND contact.firstname LIKE \'"+prenom+"%\'");
