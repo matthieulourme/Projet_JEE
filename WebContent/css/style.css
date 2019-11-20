@@ -32,8 +32,8 @@
 
 body {
 	
-	background-image: url("images/back.jpg");
-	background-color: #D2FBFC;
+	background-image: url(../images/bk_img3.png);
+
 	background-size: cover;
 }
 

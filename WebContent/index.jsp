@@ -15,7 +15,7 @@
 
 </head>
 <body>
-<div class="formulaire">
+<div class="formulaire" style="center">
 	<html:form action="/Login_">
 	<html:errors property="login" />
 	<html:errors property="name" />
