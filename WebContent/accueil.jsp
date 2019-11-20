@@ -14,7 +14,9 @@
  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
+<div class="affbienvenue">
+	<p class="text-primary"><big><strong><bean:message key="label_site_titre"/></strong></big></p>
+	</div>
 	<div class="connexion">
 <a href="Login.do" class="btn btn-outline-primary"><bean:message key="label_connexion"/></a>
 	</div>

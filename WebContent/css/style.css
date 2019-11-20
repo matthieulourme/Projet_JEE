@@ -43,7 +43,14 @@ body {
 }
 
 .affcontact {
+
 	text-align: center;
 }
+
+.affbienvenue {
+	margin-top:100px;
+	text-align: center;
+}
+
 
 a { color: inherit; } 
