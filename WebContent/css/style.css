@@ -9,11 +9,27 @@
    position:absolute;
    top:50%;
    left:50%;
-   width:350px; /* A toi de donner la bonne largeur */
+   width:650px; /* A toi de donner la bonne largeur */
    height:200px; /* A toi de donner la bonne hauteur */
-   margin-left:-200px; /* -largeur/2 */
+   margin-left:-500px; /* -largeur/2 */
    margin-top:-100px; /* -hauteur/2 */
 }
+
+.connexion {
+	
+	font-weight: bold;
+	text-align: right;
+	vertical-align: middle;
+	display: inline-block;
+   position:absolute;
+   top:50%;
+   left:50%;
+   width:350px; /* A toi de donner la bonne largeur */
+   height:200px; /* A toi de donner la bonne hauteur */
+   margin-left:-300px; /* -largeur/2 */
+   margin-top:-100px; /* -hauteur/2 */
+}
+
 body {
 	
 	background-image: url("images/back.jpg");

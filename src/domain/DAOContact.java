@@ -192,7 +192,7 @@ public class DAOContact {
 			
 			if(mail.isEmpty() && nom.isEmpty() && !prenom.isEmpty()) {
 				final PreparedStatement lPreparedStatementRecherche = lConnection.prepareStatement("SELECT * FROM contact LEFT JOIN telephone ON contact.id = telephone.contactID LEFT JOIN adresse ON contact.id = adresse.contactID WHERE  contact.firstname LIKE \'"+prenom+"%\'");
-				lPreparedStatementRecherche.setString(1, prenom);
+				//lPreparedStatementRecherche.setString(1, prenom);
 				ResultSet rs = lPreparedStatementRecherche.executeQuery();
 				
 				if (rs.next() == false) {
