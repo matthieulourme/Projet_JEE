@@ -30,12 +30,7 @@
    margin-top:-100px; /* -hauteur/2 */
 }
 
-body {
-	
-	background-image: url("images/back.jpg");
-	background-color: #D2FBFC;
-	background-size: cover;
-}
+
 
 .centrer{
 	display: block;
@@ -43,4 +38,15 @@ body {
 }
 
 
+
+body { 
+  background: url(../images/back.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.affcontact {
+	text-align: center;
+}
 
