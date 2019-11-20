@@ -64,7 +64,7 @@
 	
 	<logic:present name="allContact">
 		<logic:empty name="allContact">
-			<bean:message key="no_conatct"/>
+			<bean:message key="no_contact"/>
 		</logic:empty>
 	</logic:present>
 	
